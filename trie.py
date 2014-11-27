@@ -4,12 +4,12 @@ class Node(object):
 		self.value = value
 		self.children = {}
 	def __repr__(self):
-		self.print()
+		self.listWords()()
 		return ""
 	def listWords(self, stng):
 		if self.value == '$':
 		        print(stng)
-		        
+
 		stng += self.value
 		for child in self.children:
 		        self.children[child].listWords(stng)
@@ -40,7 +40,12 @@ class Node(object):
 			p.insert(stng[1:])
 
 	def search(self, stng):
-		return ""
+		if stng == "":
+			return True
+		if stng[0] not in self.children:
+			return False
+		if stng[0] in self.children:
+			 return self.children[stng[0]].search(stng[1:])		
 
 from sys import setrecursionlimit; setrecursionlimit(100)
 from time import clock
@@ -57,6 +62,7 @@ def main():
 	root.insert('dogs')
 	root.insert('dognip')
 	root.listWords("")
+	print("SEARCH: ",  root.search("can't"))
 
 if __name__ == '__main__':
 	main()
