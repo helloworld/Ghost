@@ -8,8 +8,7 @@ class Node(object):
 		return ""
 	def listWords(self, stng):
 		if self.value == '$':
-		        print(stng)
-
+		        print(stng.replace('*', ''))
 		stng += self.value
 		for child in self.children:
 		        self.children[child].listWords(stng)
