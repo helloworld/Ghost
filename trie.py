@@ -27,3 +27,13 @@ class Node(object):
 		return ""
 	def search(self, stng):
 		return ""
+
+from sys import setrecursionlimit; setrecursionlimit(100)
+from time import clock
+
+def main():
+	root = Node("*")
+	root.display()
+
+if __name__ == '__main__':
+	main()
