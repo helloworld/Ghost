@@ -32,6 +32,8 @@ class Node(object):
 		if stng == "":
 			p = Node('$')
 			self.children[p.value] = p
+		elif not stng[0].isalpha():
+			self.insert(stng[1:])
 		elif stng[0] in self.children:
 			self.children[stng[0]].insert(stng[1:])
 		else:
