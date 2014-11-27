@@ -7,7 +7,7 @@ class Node(object):
 		self.print()
 		return ""
 	def print(self, stng):
-		#insert code ehre
+		return ""
 	def display(self):
 		if self.value == "$": return
 		
