@@ -24,7 +24,16 @@ class Node(object):
 		for char in self.children:
 			(self.children[char]).display()
 	def insert(self, stng):
-		return ""
+		if stng == "":
+			p = Node('$')
+			self.children[p.value] = p
+		elif stng[0] in self.children:
+			self.children[stng[0]].insert(stng[1:])
+		else:
+			p = Node(stng[0])
+			self.children[stng[0]] = p
+			p.insert(stng[1:])
+
 	def search(self, stng):
 		return ""
 
@@ -34,6 +43,15 @@ from time import clock
 def main():
 	root = Node("*")
 	root.display()
+	root.insert('cat')
+	root.insert('catnip')
+	root.insert('cats')
+	root.insert('catnap')
+	root.insert("can't")
+	root.insert('cat-x')
+	root.insert('dog')
+	root.insert('dogs')
+	root.insert('dognip')
 
 if __name__ == '__main__':
 	main()
