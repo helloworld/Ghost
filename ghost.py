@@ -72,3 +72,45 @@ def createTrie(root):
 		root.insert(word.lower().strip())
 	file.close()
 	return root
+
+def humanTurn(root, word):
+	word += input('Your Turn: ').lower()[0]
+	print(word)
+	if(root.search(word) == True):
+		if(len(word) > 3):
+			print("You Lose.", word, "is a word")
+			exit()
+	if(root.contains(word) == False):
+		print("You Lose.", word, "does not start any word")
+		exit()
+	return word
+
+
+def computerTurn(root, word):
+	nextLetter = root.nextLetter(word)
+	print("Computer Turn: ", nextLetter)
+	word += nextLetter
+	print(word)
+	if(root.search(word) == True):
+		if(len(word) > 3):
+			print("Computer Loses.", word, "is a word")
+			exit()
+	if(root.contains(word) == False):
+		print("Computer Loses.", word, "does not start any word")
+		exit()
+	return word
+
+from sys import setrecursionlimit; setrecursionlimit(100)
+from time import clock
+import random
+
+def main():
+	root = Node("*")
+	root = createTrie(root)
+	word = ""
+	while True:
+		word = humanTurn(root, word)
+		word = computerTurn(root, word)
+
+if __name__ == '__main__':
+	main()
