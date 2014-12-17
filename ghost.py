@@ -64,3 +64,11 @@ class Node(object):
 				List.append(key)
 			return str(random.choice(List))
 		return self.children[stng[0]].nextLetter(stng[1:])
+
+
+def createTrie(root):
+	file = open('dictionary.txt')
+	for word in file:
+		root.insert(word.lower().strip())
+	file.close()
+	return root
